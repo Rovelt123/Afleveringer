@@ -6,5 +6,5 @@ short firstMath = 60*24; // Igen - Vi kunne bruge int, istedet for short
 float date = 22.12;
 String text = "Hej, jeg heddder "+teacherName;
 boolean falseBoolean = false;
-float secondMath = 2.2 + 33;
+float addition = 2.2 + 33;
 char keyboard = 'S';
