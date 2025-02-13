@@ -29,7 +29,7 @@ void draw() {
   }
   rectMode(CENTER);
   fill(0);
-  rect(width / 2, height / 2, 70, 300);
+  rect(width / 2, height / 2, 70, 300, 28);
   fill(light1);
   ellipse(width / 2, height  / 2 - 100, 50, 50);
   fill(light2);

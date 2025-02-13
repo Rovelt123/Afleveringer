@@ -42,7 +42,9 @@ void setup() {
     month = "December";
     break;
   }
-  println(String.format(text, day, month, monthNumber+1, day, "2025"));
+  println(String.format(text, day, month, monthNumber+1, day, year()));
+  
+  
   //Instead of using a switch case, I would use a array to define the month
-  //println(String.format(text, day, monthNames[monthNumber], monthNumber+1, day, "2025"));
+  println(String.format(text, day, monthNames[monthNumber], monthNumber+1, day, year()));
 }

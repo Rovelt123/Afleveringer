@@ -1,5 +1,5 @@
-int a = 6;
-int b = 5;
+int a = 0;
+int b = 10;
 
 if (a == 10 || b == 10 || a + b == 10) {
   println("Success");
@@ -7,19 +7,17 @@ if (a == 10 || b == 10 || a + b == 10) {
   println("Failure");
 }
 
-int min = 1;
+int min = 5;
 int max = 5;
-int number = 6;
-if (number >= min && number <= max) {
+int math = min + max;
+if (5 >= min && math >= 10) {
   println("Success");
 } else {
   println("Failure");
 }
 
-int x = 30;
-int y = 0;
-int z = 0;
-if (x + y + z == 30 && (!(x% 10 == 0) && (y % 10 == 0) && (z % 10 == 0))) {
+int x = 12, y = 10, z = 8; 
+if ((x + y + z == 30) && (x % 10 != 0) && (y % 10 != 0) && (z % 10 != 0)) {
   println("Success");
 } else {
   if (!(x + y + z == 30)) {
@@ -31,5 +29,5 @@ if (x + y + z == 30 && (!(x% 10 == 0) && (y % 10 == 0) && (z % 10 == 0))) {
   } else if ((z% 10 == 0)) {
     println("Z FAILED - was " +z);
   }
-  println("Failure");
+  println("Failure" + (x+y+z));
 }

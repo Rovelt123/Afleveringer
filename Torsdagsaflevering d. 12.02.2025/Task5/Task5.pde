@@ -13,8 +13,7 @@ void methodOne()
   
   int max = 10;
   
-  if (i > max)
-  {
+  if (i > max) {
     output = "i is greater than " + max + ".";   
   }
   
@@ -42,17 +41,17 @@ void methodTwo()
   }
   
   // Print the name of the weekday here: 
-  //Jeg valgte at bruge en array istedet for if else eller switch, da dette er noget mere optimeret. - Har også lavet de andre metoder, så du kan se, at jeg godt kan bruge dem også...
+  //I chose to use an array instead of if else or switch, as this is more optimized. - I also made the other methods, so you can see that I can use them too...
   println(dayNames[weekDay]);
   
-  //Anden metode
+  //Other method
   /* if (weekDay == 0) {
     print("MONDAY :(");
   } else if (weekDay == 1) {
     print("SUNDAY YAY!");
   } 
   
-  // Tredje metode
+  // Third method
   String dayName = "";
   switch(weekDay) {
    case 0:

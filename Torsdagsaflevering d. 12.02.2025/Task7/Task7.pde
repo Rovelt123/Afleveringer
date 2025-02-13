@@ -1,7 +1,7 @@
-int input = 20; // Tæller op fra 1-20
-int input2 = -20;  // Den vil stadig tælle op fra 1-20, da vi starter fra 1.
+int input = 20; // Counts from 1-20
+int input2 = -20;  // It will still count up from 1-20, since we start from 1, therefore we need to set i to -1 and i -= 1.
 void setup() {
-  // Virker med positiv input
+  // Works with positive input
   for (int i = 1; i < input; i += 1) {
     println(i);
     if (i == 6) {
@@ -11,7 +11,7 @@ void setup() {
     }
   }
   
-  // Virker med negativ input
+  // Works with negative input
   for (int i = -1; i > input2; i -= 1) {
     println(i);
     if (i == 6) {
