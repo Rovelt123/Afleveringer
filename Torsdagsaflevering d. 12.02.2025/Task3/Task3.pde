@@ -8,9 +8,9 @@ if (a == 10 || b == 10 || a + b == 10) {
 }
 
 int min = 5;
-int max = 5;
+int max = 11;
 int math = min + max;
-if (5 >= min && math >= 10) {
+if (5 >= min && math >= 10 && max <= 10) {
   println("Success");
 } else {
   println("Failure");
