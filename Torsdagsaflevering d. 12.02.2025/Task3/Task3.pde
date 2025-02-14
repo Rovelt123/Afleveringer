@@ -1,7 +1,7 @@
 int a = 0;
 int b = 10;
 
-if (a == 10 || b == 10 || a + b == 10) {
+if (a + b == 10 || (a==10 || b==10)) {
   println("Success");
 } else {
   println("Failure");
@@ -16,8 +16,8 @@ if (5 >= min && math >= 10 && max <= 10) {
   println("Failure");
 }
 
-int x = 12, y = 10, z = 8; 
-if ((x + y + z == 30) && (x % 10 != 0) && (y % 10 != 0) && (z % 10 != 0)) {
+int x = 11, y = 11, z = 8; 
+if (x + y + z == 30 && (x%10 != 0 && y%10 != 0 && z%10 != 0)) {
   println("Success");
 } else {
   if (!(x + y + z == 30)) {
