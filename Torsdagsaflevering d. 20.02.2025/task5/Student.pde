@@ -2,8 +2,8 @@ class Student {
   String name;
   int age;
   boolean isFemale;
-  boolean datamatikerTeam;
-  Student(String tmpName, int tmpAge, boolean tpmIsFemale, boolean tmpDatamatikerTeam) {
+  String datamatikerTeam;
+  Student(String tmpName, int tmpAge, boolean tpmIsFemale, String tmpDatamatikerTeam) {
     name = tmpName;
     age = tmpAge;
     isFemale = tpmIsFemale;

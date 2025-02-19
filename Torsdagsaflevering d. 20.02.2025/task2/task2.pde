@@ -1,15 +1,13 @@
-boolean happy = true;
+boolean happy = false;
 
  void setup() {
-   if (iAmHappy())
-   {
+   if (iAmHappy()){
      println("I clap my hands");
-   }
-   else
-   {
+   } else {
      println("I don't clap my hands"); 
    }
-   int sumOfThisMath = sum(5, 10);
+   
+   int sumOfThisMath = sum(5, 60);
    println(sumOfThisMath);
    
    String upperCaseMessage = upperCase("this is meant to be in upper case. fix this please");
