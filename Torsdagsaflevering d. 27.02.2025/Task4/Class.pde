@@ -13,8 +13,8 @@ class circle {
   void move(float tempx, float tempy) {
     x += tempx;
     y += tempy;
-    for (circle Circle : myCircles) {
+    /*for (circle Circle : myCircles) {
       Circle.display();
-    }
+    }*/
   }
 }

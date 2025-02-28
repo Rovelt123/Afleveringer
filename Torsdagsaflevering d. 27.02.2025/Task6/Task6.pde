@@ -3,6 +3,7 @@ int size = 40;
 
 void setup() {
   size(320, 320);
+  noStroke();
   for (int a = 0; a < board.length; a++) {
     for (int b = 0; b < board[a].length; b++) {
       board[a][b] = (a+b) % 2;

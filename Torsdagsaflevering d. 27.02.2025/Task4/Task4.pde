@@ -16,5 +16,6 @@ void draw() {
     float x = random(-2, 2);
     float y = random(-2, 2);
     Circle.move(x, y);
+    Circle.display();
   }
 }
