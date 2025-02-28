@@ -8,7 +8,7 @@ String []artists = {
 
 String []songs = {
  "So sick",
- "FIREBAlL",
+ "FIREBAl",
  "Let me love you",
  "Don't Matter",
  "U Remind Me",
@@ -16,6 +16,6 @@ String []songs = {
 
 void setup() {
   for (int i = 0; i < artists.length; i++) {
-    println(i+1 + ". " + artists[i] + ": " + songs[i]);
+    println(i+1 + ". " + artists[i] + ": \"" + songs[i] + "\"");
   }
 }
