@@ -8,7 +8,7 @@ String []artists = {
 
 String []songs = {
  "So sick",
- "FIREBAl",
+ "FIREBAlL",
  "Let me love you",
  "Don't Matter",
  "U Remind Me",
