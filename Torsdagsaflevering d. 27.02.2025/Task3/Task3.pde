@@ -16,6 +16,6 @@ String []songs = {
 
 void setup() {
   for (int i = 0; i < artists.length; i++) {
-    println(i+1 + ". " + artists[i] + ": " + songs[i]);
+    println(i+1 + ". " + artists[i] + ": \"" + songs[i] + "\"");
   }
 }
