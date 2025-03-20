@@ -15,3 +15,10 @@ public class Customer {
         return "\nCustomer: " + firstName + " " + lastName + " \nUsername: " + userName + "\nID: " + id;
     }
 }
+
+
+class Chef extends Customer {
+    Chef(String firstName, String lastName, String username) {
+        super(firstName, lastName, username);
+    }
+}
