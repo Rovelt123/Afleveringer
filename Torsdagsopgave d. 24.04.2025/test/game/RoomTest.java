@@ -94,25 +94,23 @@ class RoomTest {
         assertEquals("flashlight", actual.getName());
     }
 
-    @Disabled
     @Test
     public void testRemoveItemFromRoom() {
         //Arrange
         Room room = new Room("Outside", "forrest outside a cave - the cave-entrance splits in two different directions.");
         room.addItem("an old rusty flashlight");
         //Act
-        Item found = room.removeItem("flashlight");
+        Item found = room.findItem("flashlight");
         //Assert
         assertNotNull(found);
     }
 
-    @Disabled
     @Test
     public void testRemoveItemNotInRoom() {
         //Arrange
         Room room = new Room("Outside", "forrest outside a cave - the cave-entrance splits in two different directions.");
         //Act
-        Item found = room.removeItem("map");
+        Item found = room.findItem("map");
         //Assert
         assertNull(found);
     }

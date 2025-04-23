@@ -30,7 +30,7 @@ public class UserInterface {
     }
 
     public String[] readInput() {
-        System.out.println("Awaiting your command:");
+        System.out.println("\nAwaiting your command:");
         String[] commands = scanner.nextLine().trim().toLowerCase().split(" ");
         return commands;
     }
@@ -41,7 +41,7 @@ public class UserInterface {
         if (!items.isEmpty()) {
             System.out.print("Items in the room: ");
             for (Item item: items) {
-                System.out.print(item.getDescription() + " ");
+                System.out.print("\n"+item.getDescription() + " ");
             }
             System.out.println();
         }

@@ -32,6 +32,14 @@ public class Room {
         this.addItem(new Item(description, name));
     }
 
+    public void addItem(String description, String name, String useableItem) {
+        this.addItem(new Item(description, name, useableItem));
+    }
+
+    public void addItem(String description, String name, String useableItem, String note) {
+        this.addItem(new Item(description, name, useableItem, note));
+    }
+
     public Room getNorthRoom() {
         return this.northRoom; //TODO
     }
@@ -77,18 +85,17 @@ public class Room {
         return description;
     }
 
-    public Item removeItem(String itemName) {
-        Item itemToBeRemoved = findItem(itemName);
-        if (itemToBeRemoved != null) {
-            //TODO
+    public void removeItem(Item item) {
+        //Item itemToBeRemoved = findItem(itemName);
+        if (item != null) {
+            items.remove(item);
         }
-        return itemToBeRemoved;
     }
 
     public Item findItem(String itemName) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(itemName)) {
-                //TODO
+                return item;
             }
         }
         return null;

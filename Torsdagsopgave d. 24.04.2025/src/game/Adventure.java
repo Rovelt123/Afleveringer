@@ -17,6 +17,7 @@ public class Adventure {
     public void startGame() {
         boolean gameRunning = true;
         ui.printWelcome();
+        showDirections();
 
         while (gameRunning) {
             String[] commandString = ui.readInput();
@@ -46,6 +47,10 @@ public class Adventure {
                     ui.printMessage("Thank you for playing Adventure");
                     break;
                 case "go":
+                    if (secondWord.isEmpty()) {
+                        ui.printMessage("You need to enter a direction!");
+                        break;
+                    }
                     Direction direction = parseCommand(commandString[1]);
                     goCommand(direction);
                     break;
@@ -54,6 +59,21 @@ public class Adventure {
                         ui.printMessage("You have taken the " + secondWord);
                     } else {
                         ui.printMessage("There is nothing like " + secondWord + " to take around here.");
+                    }
+                    break;
+                case "drop":
+                    if (player.dropItem(secondWord)) {
+                        ui.printMessage("You have dropped " + secondWord);
+                    } else {
+                        ui.printMessage("Seems like you don't have " + secondWord + " to drop!");
+                    }
+                    break;
+                case "use":
+                    String usedItem = player.useItem(secondWord);
+                    if (usedItem != null) {
+                        ui.printMessage(usedItem);
+                    } else {
+                        ui.printMessage(secondWord + " is not a useable item!");
                     }
                     break;
                 default:
@@ -69,6 +89,8 @@ public class Adventure {
             String line = "-".repeat(name.length());
             ui.printMessage(line + "\n" + name + "\n" + line);
             ui.describeRoom(currentRoom);
+            Main.Sleep(3);
+            showDirections();
         } else {
             ui.printMessage("You cannot go in that direction");
         }
@@ -99,5 +121,23 @@ public class Adventure {
 
     public Room getCurrentRoom() {
         return player.getCurrentRoom();
+    }
+
+    public void showDirections() {
+        if (getCurrentRoom().getNorthRoom() != null || getCurrentRoom().getWestRoom() != null || getCurrentRoom().getNorthRoom() != null || getCurrentRoom().getEastRoom() != null || getCurrentRoom().getSouthRoom() != null) {
+            ui.printMessage("\nYou can go the following ways (USE \"GO\"):");
+        }
+        if (getCurrentRoom().getNorthRoom() != null) {
+            ui.printMessage("NORTH");
+        }
+        if (getCurrentRoom().getWestRoom() != null) {
+            ui.printMessage("WEST");
+        }
+        if (getCurrentRoom().getEastRoom() != null) {
+            ui.printMessage("EAST");
+        }
+        if (getCurrentRoom().getSouthRoom() != null) {
+            ui.printMessage("SOUTH");
+        }
     }
 }
