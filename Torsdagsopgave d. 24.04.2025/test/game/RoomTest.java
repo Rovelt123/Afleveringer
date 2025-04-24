@@ -1,7 +1,6 @@
 package game;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -82,13 +81,12 @@ class RoomTest {
         assertEquals(expectedNorthRoom.getName(), room5.getName());
     }
 
-    @Disabled
     @Test
     public void testAddItemToRoom() {
         //Arrange
         Room room = new Room("Outside", "forrest outside a cave - the cave-entrance splits in two different directions.");
         //Act
-        room.addItem("an old rusty flashlight");
+        room.addItem(new Item("an old rusty flashlight"));
         //Assert
         Item actual = room.findItem("flashlight");
         assertEquals("flashlight", actual.getName());
@@ -98,7 +96,7 @@ class RoomTest {
     public void testRemoveItemFromRoom() {
         //Arrange
         Room room = new Room("Outside", "forrest outside a cave - the cave-entrance splits in two different directions.");
-        room.addItem("an old rusty flashlight");
+        room.addItem(new Item("an old rusty flashlight"));
         //Act
         Item found = room.findItem("flashlight");
         //Assert

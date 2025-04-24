@@ -8,9 +8,9 @@ public class Room {
     private Room southRoom;
     private Room westRoom;
 
-    private String name;
-    private String description;
-    private ArrayList<Item> items;
+    private final String name;
+    private final String description;
+    private final ArrayList<Item> items;
 
     public Room(String name, String description) {
         this.name = name;
@@ -20,24 +20,6 @@ public class Room {
 
     public void addItem(Item item) {
         items.add(item);
-    }
-
-    // Convenience methods for creating and adding Item
-    public void addItem(String description) {
-        this.addItem(new Item(description));
-    }
-
-    // Convenience methods for creating and adding Item with custom short name
-    public void addItem(String description, String name) {
-        this.addItem(new Item(description, name));
-    }
-
-    public void addItem(String description, String name, String useableItem) {
-        this.addItem(new Item(description, name, useableItem));
-    }
-
-    public void addItem(String description, String name, String useableItem, String note) {
-        this.addItem(new Item(description, name, useableItem, note));
     }
 
     public Room getNorthRoom() {

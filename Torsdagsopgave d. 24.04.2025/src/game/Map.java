@@ -1,58 +1,73 @@
 package game;
 
+import game.Items.*;
 import java.util.ArrayList;
 
 public class Map {
+    public static final String ROOM_1 = "Outside";
+    public static final String ROOM_2 = "Narrow cave";
+    public static final String ROOM_3 = "Large grotto";
+    public static final String ROOM_4 = "Wet cav";
+    public static final String ROOM_5 = "End cave";
+    public static final String ROOM_6 = "Sunny cave";
+    public static final String ROOM_7 = "Mangrove cave";
+    public static final String ROOM_8 = "Swamp cave";
+    public static final String ROOM_9 = "Small grotto";
+
+    //Could not find another method to use my array, but also use it into my
+    //Switch case in my method 'connectRooms()'
+    public static final String[] mapNames = {
+            ROOM_1, ROOM_2, ROOM_3, ROOM_4, ROOM_5,
+            ROOM_6, ROOM_7, ROOM_8, ROOM_9
+    };
+
+    private final String[] mapDescriptions = {
+            "forrest outside a cave - the cave-entrance splits in two different directions.",
+            "narrow cave that seems to bend up and down almost infinitely",
+            "large grotto with an opening very far above where sunlight shines through.",
+            "large dark cave - the floor is quite wet and slippery here.",
+            "THIS IS THE FINAL CAVE :O!",
+            "There is so much sun in here? WOA A BIG HOLE!?",
+            "I must be near a swamp cave?",
+            "Ew, the swamp is here! :((",
+            "Why is this cave so so small?",
+    };
 
     private Room startRoom;
-    private ArrayList<Room> rooms = new ArrayList<>();
+    private final ArrayList<Room> rooms = new ArrayList<>();
     public void buildMap() {
         //TODO create rest of the 9 rooms in cave
-        //create room and add them to a ArrayList!
-        Room room1 = new Room("Outside", "forrest outside a cave - the cave-entrance splits in two different directions.");
-        Room room2 = new Room("Narrow cave", "narrow cave that seems to bend up and down almost infinitely");
-        Room room3 = new Room("Large grotto", "large grotto with an opening very far above where sunlight shines through.");
-        Room room4 = new Room("Wet cave", "large dark cave - the floor is quite wet and slippery here.");
-        Room room5 = new Room("Cave 1", "Some cave number 1.");
-        Room room6 = new Room("Cave 2", "Some cave number 2.");
-        Room room7 = new Room("Cave 3", "Some cave number 3");
-        Room room8 = new Room("Cave 4", "Some cave number 4.");
-        Room room9 = new Room("Cave 5", "Some cave number 5.");
-        rooms.add(room1);
-        rooms.add(room2);
-        rooms.add(room3);
-        rooms.add(room4);
-        rooms.add(room5);
-        rooms.add(room6);
-        rooms.add(room7);
-        rooms.add(room8);
-        rooms.add(room9);
-
-        //TODO connect all rooms according to the specified map
+        for (int i = 0; i < mapNames.length; i++) {
+            String mapName = mapNames[i];
+            String mapDescription = mapDescriptions[i];
+            rooms.add (new Room(mapName, mapDescription));
+        }
         connectRooms();
 
         //Add items to the rooms:
+        //An usable item
+        rooms.getFirst().addItem(new Useable("An old rusty flashlight", "flashlight", "Lighting up the wooooorld!"));
+        rooms.getFirst().addItem(new Useable("A crinkly paper map with a big X in the middle", "map", "Find the tresure!!!"));
 
-        //A regular item (Can't do anything with it!)
-        room1.addItem("An old rusty flashlight");
 
-        //A regular item but you can change the name of the item
-        room1.addItem("A crinkly paper map with a big X in the middle", "map");
+        // An usable item you can eat
+        rooms.getFirst().addItem(new Food("a sweet apple!", "apple", 10));
+        rooms.getFirst().addItem(new Food("a cookie!", "cookie", 25));
 
-        // An useable item you can eat
-        room1.addItem("A sweet apple!", "apple", "EAT");
+        // An usable item you can drink
+        rooms.getFirst().addItem(new Drink("A waterbottle, Stay hydrated!", "water", 10));
+        rooms.getFirst().addItem(new Drink("Redbull, SO ENERGIZED!!!!", "redbull", 100));
 
-        // An useable item you can drink
-        room1.addItem("STAY HYDRATED!", "water", "DRINK");
+        //Weapons
+        rooms.getFirst().addItem(new Gun("A small pistol", "gun", 30));
+        rooms.getFirst().addItem(new Ammo("Ammunition to a small pistol", "gunammo", "gun", 16));
+        rooms.getFirst().addItem(new Melee("A hard bat!", "bat", 15));
 
-        // An useable item you can read
-        room1.addItem("A mysterious note?", "note", "READ", "This is so cool! What should we use this for?");
+        //An item in another room (This is a prop - not useable!)
+        rooms.get(3).addItem(new Item ("a wicker bird cage", "cage"));
 
-        //Another item in another room
-        room3.addItem("a wicker bird cage", "cage");
 
-        //TODO Set start room to room1
-        startRoom = room1;
+        startRoom = rooms.getFirst();
     }
 
     public Room getStartRoom() {
@@ -64,39 +79,39 @@ public class Map {
             Room room = rooms.get(i);
             String roomName = room.getName();
             switch (roomName) {
-                case "Outside": //Room 1
+                case ROOM_1: //Room 1
                     room.setEastRoom(rooms.get(i+1)); // to room 2
                     room.setSouthRoom(rooms.get(i+3)); //To room 4
                     break;
-                case "Narrow cave": //Room 2
+                case ROOM_2: //Room 2
                     room.setWestRoom(rooms.get(i-1)); //Back to outside
                     room.setEastRoom(rooms.get(i+1)); // To room 3
                     break;
-                case "Large grotto": //Room 3
+                case ROOM_3: //Room 3
                     room.setWestRoom(rooms.get(i-1)); //Back to room 2
                     room.setSouthRoom(rooms.get(i+3)); // To room 6
                     break;
-                case "Wet cave": // Room 4
+                case ROOM_4: // Room 4
                     room.setNorthRoom(rooms.get(i-3)); // Back to outside
                     room.setSouthRoom(rooms.get(i+3)); // To room 7
                     break;
-                case "Cave 1": // Room 5
+                case ROOM_5: // Room 5
                     room.setWestRoom(rooms.get(i+3)); //Back to room 8
                     break;
-                case "Cave 2": // Room 6
+                case ROOM_6: // Room 6
                     room.setNorthRoom(rooms.get(i-3)); //Back to room 3
                     room.setSouthRoom(rooms.get(i+3)); //
                     break;
-                case "Cave 3": // Room 7
+                case ROOM_7: // Room 7
                     room.setNorthRoom(rooms.get(i-3)); //back to room 4
                     room.setEastRoom(rooms.get(i+1)); //To room 8
                     break;
-                case "Cave 4": // Room 8
+                case ROOM_8: // Room 8
                     room.setNorthRoom(rooms.get(i-3)); // To room 5
                     room.setWestRoom(rooms.get(i-1)); // To room 7
                     room.setEastRoom(rooms.get(i+1)); // To room 8
                     break;
-                case "Cave 5": // Room 9
+                case ROOM_9: // Room 9
                     room.setNorthRoom(rooms.get(i-3)); // Back to room 6
                     room.setWestRoom(rooms.get(i-1)); // back/to room 8
                     break;

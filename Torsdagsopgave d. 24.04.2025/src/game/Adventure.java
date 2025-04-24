@@ -3,9 +3,9 @@ package game;
 
 public class Adventure {
 
-    private Map map;
-    private Player player;
-    private UserInterface ui = new UserInterface();
+    private final Map map;
+    private final Player player;
+    private final UserInterface ui = new UserInterface();
 
     public Adventure() {
         map = new Map();
@@ -63,7 +63,7 @@ public class Adventure {
                     break;
                 case "drop":
                     if (player.dropItem(secondWord)) {
-                        ui.printMessage("You have dropped " + secondWord + " into " + player.getCurrentRoom()+ "!");
+                        ui.printMessage("You have dropped " + secondWord + " into " + player.getCurrentRoom().getName()+ "!");
                     } else {
                         ui.printMessage("Seems like you don't have " + secondWord + " to drop!");
                     }
@@ -73,12 +73,18 @@ public class Adventure {
                     if (usedItem != null) {
                         ui.printMessage(usedItem);
                     } else {
-                        ui.printMessage(secondWord + " is not a useable item!");
+                        ui.printMessage("You don't have a "+secondWord);
                     }
                     break;
                 case "dir":
                 case "direction":
                     showDirections();
+                    break;
+                case "thirst":
+                    ui.printMessage("Thirst stats: "+player.getThirst());
+                    break;
+                case "hunger":
+                    ui.printMessage("Hunger stats: "+player.getHunger());
                     break;
                 default:
                     ui.printMessage("I do not understand that command.");
@@ -93,7 +99,8 @@ public class Adventure {
             String line = "-".repeat(name.length());
             ui.printMessage(line + "\n" + name + "\n" + line);
             ui.describeRoom(currentRoom);
-            Main.Sleep(3);
+            //Sleep so the player can read the message!
+            Main.Sleep(2);
             showDirections();
         } else {
             ui.printMessage("You cannot go in that direction");

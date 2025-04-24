@@ -6,9 +6,11 @@ public class Main {
         new Adventure().startGame();
     }
 
+
+    //Just a generic method to sleep
     public static void Sleep(int seconds) {
         try {
-            Thread.sleep(seconds*1000);
+            Thread.sleep(seconds* 1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

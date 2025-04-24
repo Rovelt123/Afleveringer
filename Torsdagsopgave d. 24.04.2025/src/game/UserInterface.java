@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public UserInterface() {
         scanner = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class UserInterface {
 
     public void showInventory(Player player) {
        List<Item> items = player.getInventory();
-        if (items.size() == 0) {
+        if (items.isEmpty()) {
             System.out.println("You aren't carrying anything");
         } else if (items.size() <= 3) {
             // Show a nice compact list if max. carrying three things

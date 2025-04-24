@@ -1,29 +1,17 @@
 package game;
 
 public class Item {
-    private String name;
-    private String description;
-    private String consumable;
-    private String note;
+    private final String name;
+    private final String description;
 
     public Item(String description) {
         // grab name as the last word of the description
-        this(description,description.substring(description.lastIndexOf(' ')+1), null, null);
+        this(description,description.substring(description.lastIndexOf(' ')+1));
     }
 
     public Item(String description, String name) {
-        this(description, name, null, null);
-    }
-
-    public Item(String description, String name, String useAble) {
-        this(description, name, useAble, null);
-    }
-
-    public Item(String description, String name, String useAble, String note) {
-        this.name = name;
         this.description = description;
-        this.consumable = useAble;
-        this.note = note;
+        this.name = name;
     }
 
     public String getName() {
@@ -34,13 +22,14 @@ public class Item {
         return description;
     }
 
-    public String getConsumable() {
-        return consumable;
+    public String getMessage() {
+        return "Generic item message";
     }
 
-    public String getNote() {
-        return note;
+    public int getValue() {
+        return 0;
     }
+
 
     @Override
     public String toString() {
