@@ -56,14 +56,14 @@ public class Adventure {
                     break;
                 case "take":
                     if (player.takeItem(secondWord)) {
-                        ui.printMessage("You have taken the " + secondWord);
+                        ui.printMessage("You took 1x " + secondWord);
                     } else {
                         ui.printMessage("There is nothing like " + secondWord + " to take around here.");
                     }
                     break;
                 case "drop":
                     if (player.dropItem(secondWord)) {
-                        ui.printMessage("You have dropped " + secondWord);
+                        ui.printMessage("You have dropped " + secondWord + " into " + player.getCurrentRoom()+ "!");
                     } else {
                         ui.printMessage("Seems like you don't have " + secondWord + " to drop!");
                     }
@@ -75,6 +75,10 @@ public class Adventure {
                     } else {
                         ui.printMessage(secondWord + " is not a useable item!");
                     }
+                    break;
+                case "dir":
+                case "direction":
+                    showDirections();
                     break;
                 default:
                     ui.printMessage("I do not understand that command.");

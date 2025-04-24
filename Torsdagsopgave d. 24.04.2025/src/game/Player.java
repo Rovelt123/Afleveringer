@@ -57,7 +57,6 @@ public class Player {
     public boolean takeItem(String itemName) {
         Item pickupFromRoom = currentRoom.findItem(itemName);
         if (pickupFromRoom != null) {
-            //TODO
             inventory.add(pickupFromRoom);
             currentRoom.removeItem(pickupFromRoom);
             return true;

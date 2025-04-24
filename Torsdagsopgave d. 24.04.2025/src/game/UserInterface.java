@@ -64,6 +64,10 @@ public class UserInterface {
                  LOOK   Looks around you, and describes what you can see
                  TAKE   or GET, followed by the name of an item, to pick up an item in the room
                  EXIT   Ends the game
+                 USE    Use your items in your inventory
+                 DROP   Drops the items from your inventory in the room current room
+                 Inv    or inventory, Displays your inventory
+                 DIR    or direction, Displays witch directions you can go
                 """);
     }
 

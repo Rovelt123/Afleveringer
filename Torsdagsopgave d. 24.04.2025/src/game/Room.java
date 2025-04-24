@@ -41,39 +41,34 @@ public class Room {
     }
 
     public Room getNorthRoom() {
-        return this.northRoom; //TODO
+        return this.northRoom;
     }
 
     public void setNorthRoom(Room northRoom) {
         this.northRoom = northRoom;
-       //TODO
     }
 
     public Room getEastRoom() {
-        return this.eastRoom; //TODO
+        return this.eastRoom;
     }
 
     public void setEastRoom(Room eastRoom) {
         this.eastRoom = eastRoom;
-        //TODO
     }
 
     public Room getSouthRoom() {
         return southRoom;
-        //TODO
     }
 
     public void setSouthRoom(Room southRoom) {
-       //TODO
         this.southRoom = southRoom;
     }
 
     public Room getWestRoom() {
-        return westRoom; //TODO
+        return westRoom;
     }
 
     public void setWestRoom(Room westRoom) {
-        //TODO
         this.westRoom = westRoom;
     }
 
