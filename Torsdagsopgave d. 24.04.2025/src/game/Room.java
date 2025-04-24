@@ -11,15 +11,29 @@ public class Room {
     private final String name;
     private final String description;
     private final ArrayList<Item> items;
+    private final ArrayList<Enemy> enemies;
 
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
         items = new ArrayList<>();
+        enemies = new ArrayList<>();
     }
 
     public void addItem(Item item) {
         items.add(item);
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        enemies.remove(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     public Room getNorthRoom() {

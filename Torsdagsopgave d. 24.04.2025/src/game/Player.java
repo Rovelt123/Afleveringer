@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import game.Items.*;
 
 
@@ -11,11 +13,14 @@ public class Player {
     private final ArrayList<Item> inventory;
     private int thirst;
     private int hunger;
+    private int health;
+    Random random = new Random();
 
     public Player() {
-        inventory = new ArrayList<>();
-        thirst = 25;
-        hunger = 35;
+        this.inventory = new ArrayList<>();
+        this.health = 100;
+        this.thirst = 25;
+        this.hunger = 35;
     }
 
     public Room getCurrentRoom() {
@@ -34,25 +39,21 @@ public class Player {
                 requestedRoom = currentRoom.getNorthRoom();
                 break;
             case SOUTH:
-                //TODO
                 requestedRoom = currentRoom.getSouthRoom();
                 break;
             case EAST:
-                //TODO
                 requestedRoom = currentRoom.getEastRoom();
                 break;
             case WEST:
-                //TODO
                 requestedRoom = currentRoom.getWestRoom();
                 break;
         }
-        // TODO if (requestedRoom != null) make currentRoom the requestedRoom;
+
         if (requestedRoom != null) {
-            //currentRoom = requestedRoom;
             setCurrentRoom(requestedRoom);
             return true;
         }
-        // TODO return whether move was possible
+
         return false;
     }
 
@@ -151,14 +152,74 @@ public class Player {
             } else if (item instanceof Gun gun) {
                 if (gun.Attack()) {
                     System.out.println(gun.getAmmo());
-                    message = "You dealt " + gun.getValue() + " damage (But there's no enemies yet)";
+                    if (!currentRoom.getEnemies().isEmpty()) {
+                        Enemy enemy = currentRoom.getEnemies().get(0);
+                        int playerMiss = random.nextInt(3) + 1;
+                        switch (playerMiss) {
+                            case 1,2:
+                                int enemyHealth = enemy.attackEnemy(gun.getValue());
+
+                                if (enemyHealth <= 0) {
+                                    message = "YOU KILLED THE ENEMY!";
+                                    currentRoom.removeEnemy(enemy);
+                                    return message;
+                                }
+                                int enemyMiss = random.nextInt(10) + 1;
+                                switch (enemyMiss) {
+                                    case 1,2,3,4,5,6,7,8,9:
+                                        message = "You dealt " + gun.getValue() + " damage to the enemy.\nNew enemy HP: " +enemy.getHealth();
+                                        break;
+                                    case 10:
+                                        health -= enemy.getDamage();
+                                        message = "You dealt " + gun.getValue() + " damage to the enemy.\nNew enemy HP: " +enemy.getHealth() +
+                                        "\nOh no! You got counter attacked - You lost " + enemy.getDamage() + " hp!\nNew HP: " + health;
+                                        break;
+                                }
+                                return message;
+                            case 3:
+                                health -= enemy.getDamage();
+                                return "You missed your shot and got attacked!\n You lost "+ enemy.getDamage() +
+                                " hp\n New HP: " + health;
+                        }
+                    }
+                    message = "You shot at - NOTHING";
                 } else {
                     message = "There's no ammo?";
                 }
                 return message;
             } else if (item instanceof Melee melee) {
                 if (melee.Attack()) {
-                    message = "You dealt " + melee.getValue() + " damage (But there's no enemies yet)";
+                    if (!currentRoom.getEnemies().isEmpty()) {
+                        Enemy enemy = currentRoom.getEnemies().get(0);
+                        int playerMiss = random.nextInt(2) + 1;
+                        switch (playerMiss) {
+                            case 1:
+                                int enemyHealth = enemy.attackEnemy(melee.getValue());
+
+                                if (enemyHealth <= 0) {
+                                    message = "YOU KILLED THE ENEMY!";
+                                    currentRoom.removeEnemy(enemy);
+                                    return message;
+                                }
+                                int enemyMiss = random.nextInt(10) + 1;
+                                switch (enemyMiss) {
+                                    case 1,2,3,4,5,6,7,8,9:
+                                        message = "You dealt " + melee.getValue() + " damage to the enemy.\nNew enemy HP: " +enemy.getHealth();
+                                        break;
+                                    case 10:
+                                        health -= enemy.getDamage();
+                                        message = "You dealt " + melee.getValue() + " damage to the enemy.\nNew enemy HP: " +enemy.getHealth() +
+                                                "\nOh no! You got counter attacked - You lost " + enemy.getDamage() + " hp!\nNew HP: " + health;
+                                        break;
+                                }
+                                return message;
+                            case 2:
+                                health -= enemy.getDamage();
+                                return "You missed your attack and got attacked!\n You lost "+ enemy.getDamage() +
+                                        " hp\n New HP: " + health;
+                        }
+                    }
+                    //message = "You dealt " + melee.getValue() + " damage (But there's no enemies yet)";
                 }
                 return message;
             } else if (item instanceof Ammo ammo) {
@@ -193,5 +254,13 @@ public class Player {
             }
         }
         return null;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+
     }
 }

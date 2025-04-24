@@ -61,7 +61,17 @@ public class Map {
         //Weapons
         rooms.getFirst().addItem(new Gun("A small pistol", "gun", 30));
         rooms.getFirst().addItem(new Ammo("Ammunition to a small pistol", "gunammo", "gun", 16));
-        rooms.getFirst().addItem(new Melee("A hard bat!", "bat", 15));
+        rooms.getFirst().addItem(new Melee("A hard bat!", "bat", 60));
+
+        //Enemies
+        rooms.get(1).addEnemy(new Enemy(5, 50));
+
+        //Adds 3 enemies to third room
+        //Only one enemy can attack you at a time
+        //They only attack you, when you attack them!
+        rooms.get(2).addEnemy(new Enemy(5, 50));
+        rooms.get(2).addEnemy(new Enemy(5, 150));
+        rooms.get(2).addEnemy(new Enemy(5, 50));
 
         //An item in another room (This is a prop - not useable!)
         rooms.get(3).addItem(new Item ("a wicker bird cage", "cage"));

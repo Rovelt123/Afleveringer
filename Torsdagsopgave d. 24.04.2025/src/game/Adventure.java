@@ -102,6 +102,9 @@ public class Adventure {
             //Sleep so the player can read the message!
             Main.Sleep(2);
             showDirections();
+            if (!getCurrentRoom().getEnemies().isEmpty()) {
+                ui.printMessage("\nLOOK, an enemy! KILL HIM BEFORE HE KILLS YOU!\nThere are "+getCurrentRoom().getEnemies().size()+" enemies!");
+            }
         } else {
             ui.printMessage("You cannot go in that direction");
         }
